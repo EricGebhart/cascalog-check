@@ -77,7 +77,7 @@ the same and then reload the code in order to break it.
 This simple example does not break as often as my bigger project. I do
 not know why. Obviously.
 
-## What to do.
+## How to Reproduce
 
 Start with a change to the name space `(C-c M-n)`, load the code `(C-c C-k)`. Change to the repl `(C-c C-z)`.  
 
