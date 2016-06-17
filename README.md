@@ -98,6 +98,13 @@ Load just the function `(C-c C-c)`.
 
 Try combinations of load file and load defun to get success again.
 
+## Wait there's more.
+
+I tried running my hybrid clojure / cascalog function `(filter-test foo-catv)`, but got the name wrong.
+I got the name right and got an arity exception. I fixed it to call the proper function and reloaded just
+the function.  It failed with the same arity exception. I reloaded it again and it failed again.
+Finally I reloaded the entire file `(C-c C-k)` and it worked.
+
 ## What that looked like.
 
 ```
