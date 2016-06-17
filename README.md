@@ -38,7 +38,7 @@ When `(cats foo-catv)` or `(codes 3)` is failing, `(filter-test foo-catv)`
 will continue to work using the same filter function that `cats` uses.
 
 Well, Now I'm not so sure. I had an error in filter-test using the wrong filter function with the wrong number of args.  I repaired it, reloaded the function to no effect. Still wrong number of args.  Reload the function again, failure.  - 3 times. Finally reload entire file.  Success.
-See **nrepl-messages3.txt**
+See **nrepl-messages4.txt**
 
 Very strange. This has got to be an environment problem.
 
@@ -129,6 +129,17 @@ Try combinations of load file and load defun to get success again.
      ["baz" 1 3]
      ["baz" 2 100])
     cascalog-check.core> 
+    cascalog-check.core> (test-filter foo-catv)
+    CompilerException java.lang.RuntimeException: Unable to resolve symbol: test-filter in this context, compiling:(*cider-repl cascalog-check*:80:21) 
+    cascalog-check.core> (filter-test foo-catv)
+    ArityException Wrong number of args (1) passed to: core/catv-filter  clojure.lang.AFn.throwArity (AFn.java:429)
+    cascalog-check.core> (filter-test foo-catv)
+    ArityException Wrong number of args (1) passed to: core/catv-filter  clojure.lang.AFn.throwArity (AFn.java:429)
+    cascalog-check.core> (filter-test foo-catv)
+    ArityException Wrong number of args (1) passed to: core/catv-filter  clojure.lang.AFn.throwArity (AFn.java:429)
+    cascalog-check.core> (filter-test foo-catv)
+    (["foo" [3 100 8 12]])
+    cascalog-check.core> 
 ```
 
 ## .lein/profiles.clj
@@ -155,10 +166,14 @@ then failure after adding a function and loading just it,
 failures after subsequent loads and eventually success after 
 loading just the function and doing a file load immediately after.
 
-### nrepl-messages4.txt2dcmsr
+### nrepl-messages4.txt
 
 This one starts at end of messages3.txt where I first gave the wrong
 filename for filter-test.  Then gave the right name to get an arityexception.  I then fixed the function, reloadad just the function and re-ran `(filter-test foo-catv)` which is the clojure/cascalog hybrid version of `(cats foo-catv)`.  I continued to get the same arity exception until I reloaded all of the code with (C-c C-k).
+
+
+Bizarre!
+
 
 ## License
 
