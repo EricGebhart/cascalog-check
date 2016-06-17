@@ -1,0 +1,1507 @@
+This log picks up at the end of nrepl-messages3.txt where there is an error in
+
+(defn filter-test.
+
+it should be (let [f (catv-f s)]...
+
+instead of catv-filter.
+
+First I ran it with the wrong name.
+Then I ran it and got the args error.
+Then I fixed it, loaded only the function.
+
+I continued to get the same error, as it hadn't loaded.
+I reloaded just the function and tried again.
+
+Then reloaded all the code. and it started working.
+
+cascalog-check.core> (test-filter foo-catv)
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: test-filter in this context, compiling:(*cider-repl cascalog-check*:80:21)
+cascalog-check.core> (filter-test foo-catv)
+ArityException Wrong number of args (1) passed to: core/catv-filter  clojure.lang.AFn.throwArity (AFn.java:429)
+cascalog-check.core> (filter-test foo-catv)
+ArityException Wrong number of args (1) passed to: core/catv-filter  clojure.lang.AFn.throwArity (AFn.java:429)
+cascalog-check.core> (filter-test foo-catv)
+ArityException Wrong number of args (1) passed to: core/catv-filter  clojure.lang.AFn.throwArity (AFn.java:429)
+cascalog-check.core> (filter-test foo-catv)
+(["foo" [3 100 8 12]])
+cascalog-check.core>
+
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "test-filter"
+  id  "78"
+)
+(<--
+  id  "78"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-eldoc")
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "catv-f"
+  id  "79"
+)
+(<--
+  docstring  "Returns a function to filter vectors by a set of categories."
+  eldoc  (("categories"))
+  id  "79"
+  name  "catv-f"
+  ns  "cascalog-check.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+  type  "function"
+)
+(-->
+  op  "complete"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "catv"
+  context  ":same"
+  id  "80"
+)
+(<--
+  completions  ((dict "candidate" "catv-f" "ns" "cascalog-check.core" "type" "function")
+ (dict "candidate" "catv-filter" "ns" "cascalog-check.core" "type" "function"))
+  id  "80"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "catv-f"
+  id  "81"
+)
+(<--
+  docstring  "Returns a function to filter vectors by a set of categories."
+  eldoc  (("categories"))
+  id  "81"
+  name  "catv-f"
+  ns  "cascalog-check.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+  type  "function"
+)
+(-->
+  op  "complete"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "cat"
+  context  ":same"
+  id  "82"
+)
+(<--
+  completions  ((dict "candidate" "cat" "ns" "clojure.core" "type" "function")
+ (dict "candidate" "cats" "ns" "cascalog-check.core" "type" "function")
+ (dict "candidate" "catch" "type" "special-form")
+ (dict "candidate" "catv-f" "ns" "cascalog-check.core" "type" "function")
+ (dict "candidate" "cat-tap" "ns" "cascalog-check.core" "type" "var")
+ (dict "candidate" "cats-sub" "ns" "cascalog-check.core" "type" "function")
+ (dict "candidate" "catv-filter" "ns" "cascalog-check.core" "type" "function")
+ (dict "candidate" "cascalog-tap" "ns" "cascalog.api" "type" "function")
+ (dict "candidate" "cascalog.cascading.tap" "type" "namespace")
+ (dict "candidate" "cascalog.cascading.types" "type" "namespace")
+ (dict "candidate" "cascalog.in-memory.tuple" "type" "namespace")
+ (dict "candidate" "clojure.tools.analyzer.passes.trim" "type" "namespace"))
+  id  "82"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "test-filter"
+  id  "83"
+)
+(<--
+  id  "83"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-eldoc")
+)
+(-->
+  op  "complete"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "foo-catv"
+  context  ":same"
+  id  "84"
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "foo-catv"
+  id  "85"
+)
+(<--
+  docstring  nil  id  "85"
+  name  "foo-catv"
+  ns  "cascalog-check.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+  type  "variable"
+)
+(<--
+  completions  ((dict "candidate" "foo-catv" "ns" "cascalog-check.core" "type" "var")
+ (dict "candidate" "foo-bar-catv" "ns" "cascalog-check.core" "type" "var")
+ (dict "candidate" "foo-baz-catv" "ns" "cascalog-check.core" "type" "var")
+ (dict "candidate" "foo-bar-baz-catv" "ns" "cascalog-check.core" "type" "var"))
+  id  "84"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  ns  "cascalog-check.core"
+  op  "eval"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  code  "(test-filter foo-catv)\n"
+  file  "*cider-repl cascalog-check*"
+  line  80
+  column  21
+  pprint  "true"
+  pprint-fn  "clojure.pprint/pprint"
+  print-right-margin  77
+  id  "86"
+)
+(<--
+  ex  "class clojure.lang.Compiler$CompilerException"
+  id  "86"
+  root-ex  "class clojure.lang.Compiler$CompilerException"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("eval-error")
+)
+(-->
+  op  "stacktrace"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  pprint-fn  "clojure.pprint/pprint"
+  print-length  50
+  print-level  50
+  id  "87"
+)
+(<--
+  err  "CompilerException java.lang.RuntimeException: Unable to resolve symbol: test-filter in this context, compiling:(*cider-repl cascalog-check*:80:21) \n"
+  id  "86"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+)
+(<--
+  id  "86"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "86"
+  repl-type  "clj"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("state")
+)
+(<--
+  class  "clojure.lang.Compiler$CompilerException"
+  column  21
+  file  "*cider-repl cascalog-check*"
+  id  "87"
+  line  80
+  message  "java.lang.RuntimeException: Unable to resolve symbol: test-filter in this context"
+  path  "*cider-repl cascalog-check*"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  stacktrace  ((dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6543 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("dup" "tooling" "java")
+       "line" 6485 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler$InvokeExpr" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 3737 "method" "parse" "name" "clojure.lang.Compiler$InvokeExpr/parse" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6725 "method" "analyzeSeq" "name" "clojure.lang.Compiler/analyzeSeq" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6524 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("dup" "tooling" "java")
+       "line" 6485 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler$BodyExpr$Parser" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 5861 "method" "parse" "name" "clojure.lang.Compiler$BodyExpr$Parser/parse" "type" "java")
+ (dict "class" "clojure.lang.Compiler$FnMethod" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 5296 "method" "parse" "name" "clojure.lang.Compiler$FnMethod/parse" "type" "java")
+ (dict "class" "clojure.lang.Compiler$FnExpr" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 3925 "method" "parse" "name" "clojure.lang.Compiler$FnExpr/parse" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6721 "method" "analyzeSeq" "name" "clojure.lang.Compiler/analyzeSeq" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6524 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6779 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("dup" "tooling" "java")
+       "line" 6745 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.core$eval" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "eval" "line" 3081 "method" "invoke" "name" "clojure.core$eval/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/eval")
+ (dict "class" "clojure.main$repl$read_eval_print__7099$fn__7102" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/read-eval-print/fn" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099$fn__7102/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$read_eval_print__7099" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl/read-eval-print" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$fn__7108" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/fn" "line" 258 "method" "invoke" "name" "clojure.main$repl$fn__7108/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl" "line" 258 "method" "doInvoke" "name" "clojure.main$repl/doInvoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 137 "method" "applyTo" "name" "clojure.lang.RestFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571" "file" "regrow.clj" "flags"
+       ("clj")
+       "fn" "wrap-clojure-repl/fn" "line" 18 "method" "doInvoke" "name" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571/doInvoke" "ns" "refactor-nrepl.ns.slam.hound.regrow" "type" "clj" "var" "refactor-nrepl.ns.slam.hound.regrow/wrap-clojure-repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 1523 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate/fn" "line" 87 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 152 "method" "applyToHelper" "name" "clojure.lang.AFn/applyToHelper" "type" "java")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 144 "method" "applyTo" "name" "clojure.lang.AFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "clojure.core$with_bindings_STAR_" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "with-bindings*" "line" 1868 "method" "doInvoke" "name" "clojure.core$with_bindings_STAR_/doInvoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/with-bindings*")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 425 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate" "line" 85 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "interruptible-eval/fn/fn" "line" 222 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/interruptible-eval")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "run-next/fn" "line" 190 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/run-next")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 22 "method" "run" "name" "clojure.lang.AFn/run" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 1142 "method" "runWorker" "name" "java.util.concurrent.ThreadPoolExecutor/runWorker" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor$Worker" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 617 "method" "run" "name" "java.util.concurrent.ThreadPoolExecutor$Worker/run" "type" "java")
+ (dict "class" "java.lang.Thread" "file" "Thread.java" "flags"
+       ("java")
+       "line" 745 "method" "run" "name" "java.lang.Thread/run" "type" "java"))
+)
+(<--
+  class  "java.lang.RuntimeException"
+  id  "87"
+  message  "Unable to resolve symbol: test-filter in this context"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  stacktrace  ((dict "class" "clojure.lang.Util" "file" "Util.java" "flags"
+       ("java")
+       "line" 221 "method" "runtimeException" "name" "clojure.lang.Util/runtimeException" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 7019 "method" "resolveIn" "name" "clojure.lang.Compiler/resolveIn" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6963 "method" "resolve" "name" "clojure.lang.Compiler/resolve" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6924 "method" "analyzeSymbol" "name" "clojure.lang.Compiler/analyzeSymbol" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6506 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("dup" "tooling" "java")
+       "line" 6485 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler$InvokeExpr" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 3737 "method" "parse" "name" "clojure.lang.Compiler$InvokeExpr/parse" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6725 "method" "analyzeSeq" "name" "clojure.lang.Compiler/analyzeSeq" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6524 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("dup" "tooling" "java")
+       "line" 6485 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler$BodyExpr$Parser" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 5861 "method" "parse" "name" "clojure.lang.Compiler$BodyExpr$Parser/parse" "type" "java")
+ (dict "class" "clojure.lang.Compiler$FnMethod" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 5296 "method" "parse" "name" "clojure.lang.Compiler$FnMethod/parse" "type" "java")
+ (dict "class" "clojure.lang.Compiler$FnExpr" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 3925 "method" "parse" "name" "clojure.lang.Compiler$FnExpr/parse" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6721 "method" "analyzeSeq" "name" "clojure.lang.Compiler/analyzeSeq" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6524 "method" "analyze" "name" "clojure.lang.Compiler/analyze" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6779 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("dup" "tooling" "java")
+       "line" 6745 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.core$eval" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "eval" "line" 3081 "method" "invoke" "name" "clojure.core$eval/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/eval")
+ (dict "class" "clojure.main$repl$read_eval_print__7099$fn__7102" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/read-eval-print/fn" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099$fn__7102/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$read_eval_print__7099" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl/read-eval-print" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$fn__7108" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/fn" "line" 258 "method" "invoke" "name" "clojure.main$repl$fn__7108/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl" "line" 258 "method" "doInvoke" "name" "clojure.main$repl/doInvoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 137 "method" "applyTo" "name" "clojure.lang.RestFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571" "file" "regrow.clj" "flags"
+       ("clj")
+       "fn" "wrap-clojure-repl/fn" "line" 18 "method" "doInvoke" "name" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571/doInvoke" "ns" "refactor-nrepl.ns.slam.hound.regrow" "type" "clj" "var" "refactor-nrepl.ns.slam.hound.regrow/wrap-clojure-repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 1523 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate/fn" "line" 87 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 152 "method" "applyToHelper" "name" "clojure.lang.AFn/applyToHelper" "type" "java")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 144 "method" "applyTo" "name" "clojure.lang.AFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "clojure.core$with_bindings_STAR_" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "with-bindings*" "line" 1868 "method" "doInvoke" "name" "clojure.core$with_bindings_STAR_/doInvoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/with-bindings*")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 425 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate" "line" 85 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "interruptible-eval/fn/fn" "line" 222 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/interruptible-eval")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "run-next/fn" "line" 190 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/run-next")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 22 "method" "run" "name" "clojure.lang.AFn/run" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 1142 "method" "runWorker" "name" "java.util.concurrent.ThreadPoolExecutor/runWorker" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor$Worker" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 617 "method" "run" "name" "java.util.concurrent.ThreadPoolExecutor$Worker/run" "type" "java")
+ (dict "class" "java.lang.Thread" "file" "Thread.java" "flags"
+       ("java")
+       "line" 745 "method" "run" "name" "java.lang.Thread/run" "type" "java"))
+)
+(<--
+  id  "87"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "complete"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "filter"
+  context  ":same"
+  id  "88"
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "filter"
+  id  "89"
+)
+(<--
+  completions  ((dict "candidate" "filter" "ns" "clojure.core" "type" "function")
+ (dict "candidate" "filterv" "ns" "clojure.core" "type" "function")
+ (dict "candidate" "filterfn" "ns" "cascalog.api" "type" "macro")
+ (dict "candidate" "filterop" "ns" "cascalog.api" "type" "var")
+ (dict "candidate" "filter-test" "ns" "cascalog-check.core" "type" "function"))
+  id  "88"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(<--
+  docstring  "Returns a lazy sequence of the items in coll for which\n  (pred item) returns true. pred must be free of side-effects.\n  Returns a transducer when no collection is provided."
+  eldoc  (("pred")
+ ("pred" "coll"))
+  id  "89"
+  name  "filter"
+  ns  "clojure.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+  type  "function"
+)
+(-->
+  op  "complete"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "filter-"
+  context  ":same"
+  id  "90"
+)
+(<--
+  completions  ((dict "candidate" "filter-test" "ns" "cascalog-check.core" "type" "function"))
+  id  "90"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "filter-test"
+  id  "91"
+)
+(<--
+  docstring  nil  eldoc  (("s"))
+  id  "91"
+  name  "filter-test"
+  ns  "cascalog-check.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+  type  "function"
+)
+(-->
+  op  "complete"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "filter-t"
+  context  ":same"
+  id  "92"
+)
+(<--
+  completions  ((dict "candidate" "filter-test" "ns" "cascalog-check.core" "type" "function"))
+  id  "92"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "complete"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "filter-te"
+  context  ":same"
+  id  "93"
+)
+(<--
+  completions  ((dict "candidate" "filter-test" "ns" "cascalog-check.core" "type" "function"))
+  id  "93"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "complete"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "filter-tes"
+  context  ":same"
+  id  "94"
+)
+(<--
+  completions  ((dict "candidate" "filter-test" "ns" "cascalog-check.core" "type" "function"))
+  id  "94"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "complete"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "filter-test"
+  context  ":same"
+  id  "95"
+)
+(<--
+  completions  ((dict "candidate" "filter-test" "ns" "cascalog-check.core" "type" "function"))
+  id  "95"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  ns  "cascalog-check.core"
+  op  "eval"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  code  "(filter-test foo-catv)\n"
+  file  "*cider-repl cascalog-check*"
+  line  82
+  column  21
+  pprint  "true"
+  pprint-fn  "clojure.pprint/pprint"
+  print-right-margin  77
+  id  "96"
+)
+(<--
+  ex  "class clojure.lang.ArityException"
+  id  "96"
+  root-ex  "class clojure.lang.ArityException"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("eval-error")
+)
+(-->
+  op  "stacktrace"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  pprint-fn  "clojure.pprint/pprint"
+  print-length  50
+  print-level  50
+  id  "97"
+)
+(<--
+  err  "ArityException Wrong number of args (1) passed to: core/catv-filter  clojure.lang.AFn.throwArity (AFn.java:429)\n"
+  id  "96"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+)
+(<--
+  id  "96"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "96"
+  repl-type  "clj"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("state")
+)
+(<--
+  class  "clojure.lang.ArityException"
+  id  "97"
+  message  "Wrong number of args (1) passed to: core/catv-filter"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  stacktrace  ((dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 429 "method" "throwArity" "name" "clojure.lang.AFn/throwArity" "type" "java")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 32 "method" "invoke" "name" "clojure.lang.AFn/invoke" "type" "java")
+ (dict "class" "cascalog_check.core$filter_test" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "filter-test" "line" 99 "method" "invoke" "name" "cascalog_check.core$filter_test/invoke" "ns" "cascalog-check.core" "type" "clj" "var" "cascalog-check.core/filter-test")
+ (dict "class" "cascalog_check.core$eval519602" "file" "form-init1299946235664781380.clj" "flags"
+       ("repl" "clj")
+       "fn" "eval519602" "line" 82 "method" "invoke" "name" "cascalog_check.core$eval519602/invoke" "ns" "cascalog-check.core" "type" "clj" "var" "cascalog-check.core/eval519602")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6782 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("dup" "tooling" "java")
+       "line" 6745 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.core$eval" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "eval" "line" 3081 "method" "invoke" "name" "clojure.core$eval/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/eval")
+ (dict "class" "clojure.main$repl$read_eval_print__7099$fn__7102" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/read-eval-print/fn" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099$fn__7102/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$read_eval_print__7099" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl/read-eval-print" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$fn__7108" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/fn" "line" 258 "method" "invoke" "name" "clojure.main$repl$fn__7108/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl" "line" 258 "method" "doInvoke" "name" "clojure.main$repl/doInvoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 137 "method" "applyTo" "name" "clojure.lang.RestFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571" "file" "regrow.clj" "flags"
+       ("clj")
+       "fn" "wrap-clojure-repl/fn" "line" 18 "method" "doInvoke" "name" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571/doInvoke" "ns" "refactor-nrepl.ns.slam.hound.regrow" "type" "clj" "var" "refactor-nrepl.ns.slam.hound.regrow/wrap-clojure-repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 1523 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate/fn" "line" 87 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 152 "method" "applyToHelper" "name" "clojure.lang.AFn/applyToHelper" "type" "java")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 144 "method" "applyTo" "name" "clojure.lang.AFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "clojure.core$with_bindings_STAR_" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "with-bindings*" "line" 1868 "method" "doInvoke" "name" "clojure.core$with_bindings_STAR_/doInvoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/with-bindings*")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 425 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate" "line" 85 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "interruptible-eval/fn/fn" "line" 222 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/interruptible-eval")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "run-next/fn" "line" 190 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/run-next")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 22 "method" "run" "name" "clojure.lang.AFn/run" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 1142 "method" "runWorker" "name" "java.util.concurrent.ThreadPoolExecutor/runWorker" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor$Worker" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 617 "method" "run" "name" "java.util.concurrent.ThreadPoolExecutor$Worker/run" "type" "java")
+ (dict "class" "java.lang.Thread" "file" "Thread.java" "flags"
+       ("java")
+       "line" 745 "method" "run" "name" "java.lang.Thread/run" "type" "java"))
+)
+(<--
+  id  "97"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "info"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "22"
+  id  "98"
+)
+(<--
+  id  "98"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-info")
+)
+(-->
+  op  "info"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "tools.products"
+  symbol  "reduce"
+  id  "99"
+)
+(<--
+  id  "99"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-info")
+)
+(-->
+  op  "info"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "catv-filter"
+  id  "100"
+)
+(<--
+  arglists-str  "([categories v])"
+  column  1
+  doc  "returns true or false if a vector matches the categories or not.\n  categoriey can be nil or a lists of category vectors.\n  The vector will be shortened to match the comparison\n  category vectors as needed so that sub categories will match. "
+  file  "file:/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj"
+  id  "100"
+  line  58
+  name  "catv-filter"
+  ns  "cascalog-check.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "catv-filter"
+  id  "101"
+)
+(<--
+  docstring  "returns true or false if a vector matches the categories or not.\n  categoriey can be nil or a lists of category vectors.\n  The vector will be shortened to match the comparison\n  category vectors as needed so that sub categories will match. "
+  eldoc  (("categories" "v"))
+  id  "101"
+  name  "catv-filter"
+  ns  "cascalog-check.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+  type  "function"
+)
+(-->
+  op  "eval"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  code  "(do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-ew 'cascalog-check.core))"
+  id  "102"
+)
+(-->
+  ns  "cascalog-check.core"
+  op  "eval"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  code  "(defn filter-test [s]\n  (let [f (catv-f s)]\n    (filter #(f (second %)) (run<- (cats-sub)))))\n"
+  file  "/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj"
+  line  98
+  column  0
+  id  "103"
+)
+(<--
+  id  "103"
+  ns  "cascalog-check.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  value  "#'cascalog-check.core/filter-test"
+)
+(<--
+  id  "103"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "103"
+  repl-type  "clj"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("state")
+)
+(<--
+  id  "102"
+  out  "({:line 99, :column 12, :msg Function on var #'cascalog-check.core/catv-filter called with 1 args, but it is only known to take one of the following args: [categories v], :file file:/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj, :level :warning})\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "102"
+  ns  "user"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  value  "\"[{\\\"line\\\":99,\\\"column\\\":12,\\\"msg\\\":\\\"Function on var #'cascalog-check.core\\\\/catv-filter called with 1 args, but it is only known to take one of the following args: [categories v]\\\",\\\"file\\\":\\\"file:\\\\/Users\\\\/eric\\\\/Projects\\\\/cascalog-check\\\\/src\\\\/cascalog_check\\\\/core.clj\\\",\\\"level\\\":\\\"warning\\\"}]\""
+)
+(-->
+  op  "eval"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  code  "(do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-kb 'cascalog-check.core \"/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj\"))"
+  id  "104"
+)
+(<--
+  id  "102"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "102"
+  repl-type  "clj"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("state")
+)
+(-->
+  ns  "cascalog-check.core"
+  op  "eval"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  code  "(filter-test foo-catv)\n"
+  file  "*cider-repl cascalog-check*"
+  line  84
+  column  21
+  pprint  "true"
+  pprint-fn  "clojure.pprint/pprint"
+  print-right-margin  77
+  id  "105"
+)
+(<--
+  ex  "class clojure.lang.ArityException"
+  id  "105"
+  root-ex  "class clojure.lang.ArityException"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("eval-error")
+)
+(-->
+  op  "stacktrace"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  pprint-fn  "clojure.pprint/pprint"
+  print-length  50
+  print-level  50
+  id  "106"
+)
+(<--
+  err  "ArityException Wrong number of args (1) passed to: core/catv-filter  clojure.lang.AFn.throwArity (AFn.java:429)\n"
+  id  "105"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+)
+(<--
+  id  "105"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "105"
+  repl-type  "clj"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("state")
+)
+(<--
+  class  "clojure.lang.ArityException"
+  id  "106"
+  message  "Wrong number of args (1) passed to: core/catv-filter"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  stacktrace  ((dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 429 "method" "throwArity" "name" "clojure.lang.AFn/throwArity" "type" "java")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 32 "method" "invoke" "name" "clojure.lang.AFn/invoke" "type" "java")
+ (dict "class" "cascalog_check.core$filter_test" "file" "form-init1299946235664781380.clj" "flags"
+       ("repl" "clj")
+       "fn" "filter-test" "line" 99 "method" "invoke" "name" "cascalog_check.core$filter_test/invoke" "ns" "cascalog-check.core" "type" "clj" "var" "cascalog-check.core/filter-test")
+ (dict "class" "cascalog_check.core$eval542238" "file" "form-init1299946235664781380.clj" "flags"
+       ("repl" "clj")
+       "fn" "eval542238" "line" 84 "method" "invoke" "name" "cascalog_check.core$eval542238/invoke" "ns" "cascalog-check.core" "type" "clj" "var" "cascalog-check.core/eval542238")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6782 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("dup" "tooling" "java")
+       "line" 6745 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.core$eval" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "eval" "line" 3081 "method" "invoke" "name" "clojure.core$eval/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/eval")
+ (dict "class" "clojure.main$repl$read_eval_print__7099$fn__7102" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/read-eval-print/fn" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099$fn__7102/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$read_eval_print__7099" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl/read-eval-print" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$fn__7108" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/fn" "line" 258 "method" "invoke" "name" "clojure.main$repl$fn__7108/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl" "line" 258 "method" "doInvoke" "name" "clojure.main$repl/doInvoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 137 "method" "applyTo" "name" "clojure.lang.RestFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571" "file" "regrow.clj" "flags"
+       ("clj")
+       "fn" "wrap-clojure-repl/fn" "line" 18 "method" "doInvoke" "name" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571/doInvoke" "ns" "refactor-nrepl.ns.slam.hound.regrow" "type" "clj" "var" "refactor-nrepl.ns.slam.hound.regrow/wrap-clojure-repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 1523 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate/fn" "line" 87 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 152 "method" "applyToHelper" "name" "clojure.lang.AFn/applyToHelper" "type" "java")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 144 "method" "applyTo" "name" "clojure.lang.AFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "clojure.core$with_bindings_STAR_" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "with-bindings*" "line" 1868 "method" "doInvoke" "name" "clojure.core$with_bindings_STAR_/doInvoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/with-bindings*")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 425 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate" "line" 85 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "interruptible-eval/fn/fn" "line" 222 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/interruptible-eval")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "run-next/fn" "line" 190 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/run-next")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 22 "method" "run" "name" "clojure.lang.AFn/run" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 1142 "method" "runWorker" "name" "java.util.concurrent.ThreadPoolExecutor/runWorker" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor$Worker" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 617 "method" "run" "name" "java.util.concurrent.ThreadPoolExecutor$Worker/run" "type" "java")
+ (dict "class" "java.lang.Thread" "file" "Thread.java" "flags"
+       ("java")
+       "line" 745 "method" "run" "name" "java.lang.Thread/run" "type" "java"))
+)
+(<--
+  id  "106"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "info"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "%"
+  id  "107"
+)
+(<--
+  id  "107"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-info")
+)
+(-->
+  op  "info"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "%"
+  id  "108"
+)
+(<--
+  id  "108"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-info")
+)
+(-->
+  op  "info"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "%"
+  id  "109"
+)
+(<--
+  id  "109"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-info")
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "%"
+  id  "110"
+)
+(<--
+  id  "110"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-eldoc")
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "second"
+  id  "111"
+)
+(<--
+  docstring  "Same as (first (next x))"
+  eldoc  (("x"))
+  id  "111"
+  name  "second"
+  ns  "clojure.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+  type  "function"
+)
+(<--
+  id  "104"
+  ns  "user"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  value  "\"[{\\\"file\\\":\\\"\\\\/Users\\\\/eric\\\\/Projects\\\\/cascalog-check\\\\/src\\\\/cascalog_check\\\\/core.clj\\\",\\\"msg\\\":\\\"Kibit suggests using\\\\nconj\\\\ninstead of \\\\n(fn* [p1__579838# p2__579839#] (conj p1__579838# p2__579839#))\\\",\\\"level\\\":\\\"warning\\\",\\\"line\\\":null}]\""
+)
+(-->
+  op  "eval"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  code  "(do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-tc 'cascalog-check.core))"
+  id  "112"
+)
+(<--
+  id  "104"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("done")
+)
+(<--
+  id  "112"
+  out  "Start collecting cascalog-check.core\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  changed-namespaces  (dict)
+  id  "104"
+  repl-type  "clj"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("state")
+)
+(-->
+  ns  "cascalog-check.core"
+  op  "eval"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  code  "(defn filter-test [s]\n  (let [f (catv-f s)]\n    (filter #(f (second %)) (run<- (cats-sub)))))\n"
+  file  "/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj"
+  line  98
+  column  0
+  id  "113"
+)
+(<--
+  id  "113"
+  ns  "cascalog-check.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  value  "#'cascalog-check.core/filter-test"
+)
+(<--
+  id  "113"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "113"
+  repl-type  "clj"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("state")
+)
+(<--
+  id  "112"
+  out  "Finished collecting cascalog-check.core\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "112"
+  out  "Collected 1 namespaces in 2691.860384 msecs\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "112"
+  out  "Not checking cascalog-check.core (does not depend on clojure.core.typed)\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "112"
+  out  "Checked 1 namespaces  in 2703.728606 msecs\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "112"
+  ns  "user"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  value  "\"[]\""
+)
+(<--
+  id  "112"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "112"
+  repl-type  "clj"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("state")
+)
+(-->
+  op  "info"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "run<-"
+  id  "114"
+)
+(<--
+  arglists-str  "([query] [queryfn & args])"
+  column  1
+  doc  "A simple way to run a subquery (a query that starts with <- instead of ??<-)."
+  file  "file:/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj"
+  id  "114"
+  line  14
+  name  "run<-"
+  ns  "cascalog-check.core"
+  resource  "cascalog_check/core.clj"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  ns  "cascalog-check.core"
+  op  "eval"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  code  "(filter-test foo-catv)\n"
+  file  "*cider-repl cascalog-check*"
+  line  86
+  column  21
+  pprint  "true"
+  pprint-fn  "clojure.pprint/pprint"
+  print-right-margin  77
+  id  "115"
+)
+(<--
+  ex  "class clojure.lang.ArityException"
+  id  "115"
+  root-ex  "class clojure.lang.ArityException"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("eval-error")
+)
+(-->
+  op  "stacktrace"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  pprint-fn  "clojure.pprint/pprint"
+  print-length  50
+  print-level  50
+  id  "116"
+)
+(<--
+  err  "ArityException Wrong number of args (1) passed to: core/catv-filter  clojure.lang.AFn.throwArity (AFn.java:429)\n"
+  id  "115"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+)
+(<--
+  id  "115"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "115"
+  repl-type  "clj"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("state")
+)
+(<--
+  class  "clojure.lang.ArityException"
+  id  "116"
+  message  "Wrong number of args (1) passed to: core/catv-filter"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  stacktrace  ((dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 429 "method" "throwArity" "name" "clojure.lang.AFn/throwArity" "type" "java")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 32 "method" "invoke" "name" "clojure.lang.AFn/invoke" "type" "java")
+ (dict "class" "cascalog_check.core$filter_test" "file" "form-init1299946235664781380.clj" "flags"
+       ("repl" "clj")
+       "fn" "filter-test" "line" 99 "method" "invoke" "name" "cascalog_check.core$filter_test/invoke" "ns" "cascalog-check.core" "type" "clj" "var" "cascalog-check.core/filter-test")
+ (dict "class" "cascalog_check.core$eval611775" "file" "form-init1299946235664781380.clj" "flags"
+       ("repl" "clj")
+       "fn" "eval611775" "line" 86 "method" "invoke" "name" "cascalog_check.core$eval611775/invoke" "ns" "cascalog-check.core" "type" "clj" "var" "cascalog-check.core/eval611775")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("tooling" "java")
+       "line" 6782 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.lang.Compiler" "file" "Compiler.java" "flags"
+       ("dup" "tooling" "java")
+       "line" 6745 "method" "eval" "name" "clojure.lang.Compiler/eval" "type" "java")
+ (dict "class" "clojure.core$eval" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "eval" "line" 3081 "method" "invoke" "name" "clojure.core$eval/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/eval")
+ (dict "class" "clojure.main$repl$read_eval_print__7099$fn__7102" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/read-eval-print/fn" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099$fn__7102/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$read_eval_print__7099" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl/read-eval-print" "line" 240 "method" "invoke" "name" "clojure.main$repl$read_eval_print__7099/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl$fn__7108" "file" "main.clj" "flags"
+       ("clj")
+       "fn" "repl/fn" "line" 258 "method" "invoke" "name" "clojure.main$repl$fn__7108/invoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.main$repl" "file" "main.clj" "flags"
+       ("dup" "clj")
+       "fn" "repl" "line" 258 "method" "doInvoke" "name" "clojure.main$repl/doInvoke" "ns" "clojure.main" "type" "clj" "var" "clojure.main/repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 137 "method" "applyTo" "name" "clojure.lang.RestFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571" "file" "regrow.clj" "flags"
+       ("clj")
+       "fn" "wrap-clojure-repl/fn" "line" 18 "method" "doInvoke" "name" "refactor_nrepl.ns.slam.hound.regrow$wrap_clojure_repl$fn__9571/doInvoke" "ns" "refactor-nrepl.ns.slam.hound.regrow" "type" "clj" "var" "refactor-nrepl.ns.slam.hound.regrow/wrap-clojure-repl")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 1523 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate/fn" "line" 87 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__920/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 152 "method" "applyToHelper" "name" "clojure.lang.AFn/applyToHelper" "type" "java")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 144 "method" "applyTo" "name" "clojure.lang.AFn/applyTo" "type" "java")
+ (dict "class" "clojure.core$apply" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "apply" "line" 630 "method" "invoke" "name" "clojure.core$apply/invoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/apply")
+ (dict "class" "clojure.core$with_bindings_STAR_" "file" "core.clj" "flags"
+       ("clj")
+       "fn" "with-bindings*" "line" 1868 "method" "doInvoke" "name" "clojure.core$with_bindings_STAR_/doInvoke" "ns" "clojure.core" "type" "clj" "var" "clojure.core/with-bindings*")
+ (dict "class" "clojure.lang.RestFn" "file" "RestFn.java" "flags"
+       ("java")
+       "line" 425 "method" "invoke" "name" "clojure.lang.RestFn/invoke" "type" "java")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "evaluate" "line" 85 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$evaluate/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/evaluate")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "interruptible-eval/fn/fn" "line" 222 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__965$fn__968/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/interruptible-eval")
+ (dict "class" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960" "file" "interruptible_eval.clj" "flags"
+       ("tooling" "clj")
+       "fn" "run-next/fn" "line" 190 "method" "invoke" "name" "clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__960/invoke" "ns" "clojure.tools.nrepl.middleware.interruptible-eval" "type" "clj" "var" "clojure.tools.nrepl.middleware.interruptible-eval/run-next")
+ (dict "class" "clojure.lang.AFn" "file" "AFn.java" "flags"
+       ("java")
+       "line" 22 "method" "run" "name" "clojure.lang.AFn/run" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 1142 "method" "runWorker" "name" "java.util.concurrent.ThreadPoolExecutor/runWorker" "type" "java")
+ (dict "class" "java.util.concurrent.ThreadPoolExecutor$Worker" "file" "ThreadPoolExecutor.java" "flags"
+       ("java")
+       "line" 617 "method" "run" "name" "java.util.concurrent.ThreadPoolExecutor$Worker/run" "type" "java")
+ (dict "class" "java.lang.Thread" "file" "Thread.java" "flags"
+       ("java")
+       "line" 745 "method" "run" "name" "java.lang.Thread/run" "type" "java"))
+)
+(<--
+  id  "116"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(-->
+  op  "info"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "tools.products"
+  symbol  "dosum"
+  id  "117"
+)
+(<--
+  id  "117"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-info")
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "?catv"
+  id  "118"
+)
+(<--
+  id  "118"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-eldoc")
+)
+(-->
+  op  "eldoc"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "cascalog-check.core"
+  symbol  "prods"
+  id  "119"
+)
+(<--
+  id  "119"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-eldoc")
+)
+(-->
+  op  "eval"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  code  "(do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-ew 'cascalog-check.core))"
+  id  "120"
+)
+(-->
+  op  "load-file"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  file  "(ns cascalog-check.core\n  (:require [cascalog.logic.ops :as c]\n            [cascalog.cascading.stats :as stats]\n            [cascalog.cascading.io :as io]\n            [cascalog.logic.def :as d]\n            [cascalog.cascading.def :as cd]\n            [cascalog.api :refer :all]))\n\n(defn foo\n  \"I don't do a whole lot.\"\n  [x]\n  (println x \"Hello, World!\"))\n\n(defn run<-\n  \"A simple way to run a subquery (a query that starts with <- instead of ??<-).\"\n  ([query]\n   (first (??- query)))\n  ([queryfn & args]\n   (run<- (apply queryfn args))))\n\n(defn s [x] x)\n\n\n(def  cat-tap [[\"foo\" 1 3]\n               [\"foo\" 2 100]\n               [\"foo\" 3 8]\n               [\"foo\" 4 12]\n               [\"bar\" 1 5]\n               [\"bar\" 2 22]\n               [\"bar\" 3 36]\n               [\"bar\" 4 212]\n               [\"baz\" 1 3]\n               [\"baz\" 2 100]\n               [\"baz\" 3 8]\n               [\"baz\" 4 300]])\n\n(def foo-catv '([3 100 8 12]))\n(def foo-baz-catv '([3 100 8]))\n(def foo-bar-catv '([3 100 8 12] [5 22 36 212]))\n(def foo-bar-baz-catv '([3 100 8] [5 22 36 212]))\n\n(defn lf [max lvl] (< lvl max))\n\n(defn lvl-f\n  [max]\n  (filterfn [lvl] (lf max lvl)))\n\n(defn codes [max]\n  (let [lvl-filter (lvl-f max)]\n    (??<- [?id ?lvl ?code]\n          (cat-tap ?id ?lvl ?code)\n          (:sort ?lvl)\n                                        ;(< ?lvl max)\n                                        ;(lf max ?lvl)\n          (lvl-filter ?lvl)\n          )))\n\n(defn catv-filter\n  \"returns true or false if a vector matches the categories or not.\n  categoriey can be nil or a lists of category vectors.\n  The vector will be shortened to match the comparison\n  category vectors as needed so that sub categories will match. \"\n  [categories v]\n  (if (empty? categories)\n    true\n    (reduce #(or (= (vec (take (count %2) v)) %2) %1) false categories)))\n\n(defn catv-f\n  \"Returns a function to filter vectors by a set of categories.\"\n  [categories]\n  (filterfn [v]\n            (catv-filter categories v)))\n\n\n\n\n(defbufferfn mk-vec [tuples]\n  [[(reduce #(conj %1 %2) [] (map first tuples))]])\n\n(defbufferfn dosum [tuples] [(reduce + (map first tuples))])\n\n\n\n(defn cats-sub []\n  (<- [?id ?catv]\n      (cat-tap ?id ?lvl ?code)\n      (:sort ?lvl)\n      (mk-vec ?code :> ?catv)))\n\n(defn cats [s]\n  (let [prods (cats-sub)\n        catf (catv-f s)]\n    (??<- [?id ?catv ?res]\n          (prods ?id ?catv)\n          (catv-filter s ?catv :> ?res)\n          (catf ?catv))))\n\n(defn filter-test [s]\n  (let [f (catv-f s)]\n    (filter #(f (second %)) (run<- (cats-sub)))))\n\n(defn test-them []\n  {:cats (cats nil)\n   :allcats (filter-test nil)\n   :foo (filter-test foo-catv)\n   :foo-baz (filter-test foo-baz-catv)})\n"
+  file-path  "/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj"
+  file-name  "core.clj"
+  id  "121"
+)
+(<--
+  id  "121"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  value  "#'cascalog-check.core/test-them"
+)
+(<--
+  id  "121"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "121"
+  repl-type  "clj"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("state")
+)
+(-->
+  op  "info"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  ns  "tools.products"
+  symbol  "defbufferfn"
+  id  "122"
+)
+(<--
+  id  "122"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done" "no-info")
+)
+(<--
+  id  "120"
+  out  "()\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "120"
+  ns  "user"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  value  "\"[]\""
+)
+(-->
+  op  "eval"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  code  "(do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-kb 'cascalog-check.core \"/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj\"))"
+  id  "123"
+)
+(<--
+  id  "120"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "120"
+  repl-type  "clj"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("state")
+)
+(-->
+  ns  "cascalog-check.core"
+  op  "eval"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  code  "(filter-test foo-catv)\n"
+  file  "*cider-repl cascalog-check*"
+  line  88
+  column  21
+  pprint  "true"
+  pprint-fn  "clojure.pprint/pprint"
+  print-right-margin  77
+  id  "124"
+)
+(<--
+  id  "124"
+  pprint-out  "([\"foo\" [3 100 8 12]])\n"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+)
+(<--
+  id  "124"
+  pprint-sentinel  (dict)
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+)
+(<--
+  id  "124"
+  ns  "cascalog-check.core"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+)
+(<--
+  id  "124"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "124"
+  repl-type  "clj"
+  session  "b07f713c-2fbb-44f5-ae1b-175ebc1a39a7"
+  status  ("state")
+)
+(<--
+  id  "123"
+  ns  "user"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  value  "\"[{\\\"file\\\":\\\"\\\\/Users\\\\/eric\\\\/Projects\\\\/cascalog-check\\\\/src\\\\/cascalog_check\\\\/core.clj\\\",\\\"msg\\\":\\\"Kibit suggests using\\\\nconj\\\\ninstead of \\\\n(fn* [p1__672063# p2__672064#] (conj p1__672063# p2__672064#))\\\",\\\"level\\\":\\\"warning\\\",\\\"line\\\":null}]\""
+)
+(-->
+  op  "eval"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  code  "(do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-tc 'cascalog-check.core))"
+  id  "125"
+)
+(<--
+  id  "123"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("done")
+)
+(<--
+  id  "125"
+  out  "Start collecting cascalog-check.core\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  changed-namespaces  (dict)
+  id  "123"
+  repl-type  "clj"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("state")
+)
+(<--
+  id  "125"
+  out  "Finished collecting cascalog-check.core\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "125"
+  out  "Collected 1 namespaces in 2608.892212 msecs\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "125"
+  out  "Not checking cascalog-check.core (does not depend on clojure.core.typed)\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "125"
+  out  "Checked 1 namespaces  in 2622.335696 msecs\n"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+)
+(<--
+  id  "125"
+  ns  "user"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  value  "\"[]\""
+)
+(<--
+  id  "125"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("done")
+)
+(<--
+  changed-namespaces  (dict)
+  id  "125"
+  repl-type  "clj"
+  session  "2fd88622-a6b6-4ec7-afab-6a5e2773051a"
+  status  ("state")
+)

@@ -18,6 +18,8 @@
   ([queryfn & args]
    (run<- (apply queryfn args))))
 
+(defn s [x] x)
+
 
 (def  cat-tap [["foo" 1 3]
                ["foo" 2 100]
@@ -94,7 +96,7 @@
           (catf ?catv))))
 
 (defn filter-test [s]
-  (let [f (catv-filter s)]
+  (let [f (catv-f s)]
     (filter #(f (second %)) (run<- (cats-sub)))))
 
 (defn test-them []
