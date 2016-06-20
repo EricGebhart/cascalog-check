@@ -18,9 +18,6 @@
   ([queryfn & args]
    (run<- (apply queryfn args))))
 
-(defn s [x] x)
-
-
 (def  cat-tap [["foo" 1 3]
                ["foo" 2 100]
                ["foo" 3 8]
@@ -44,6 +41,9 @@
 (defn lvl-f
   [max]
   (filterfn [lvl] (lf max lvl)))
+
+(defn s [x] x)
+
 
 (defn codes [max]
   (let [lvl-filter (lvl-f max)]
@@ -75,7 +75,7 @@
 
 
 (defbufferfn mk-vec [tuples]
-  [[(reduce #(conj %1 %2) [] (map first tuples))]])
+  [[(reduce conj [] (map first tuples))]])
 
 (defbufferfn dosum [tuples] [(reduce + (map first tuples))])
 

@@ -3,14 +3,15 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.7.0"]
-                 [cascalog/cascalog-core "3.0.0"]
-                 ]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                                        ;[org.clojure/clojure "1.8.0"]
+                 [cascalog/cascalog-core "3.0.0"]]
 
+  :plugins [[lein-typed "0.3.5"]]
 
-  :profiles {:1.7 {:dependencies [[org.clojure/clojure "1.7.0"]]}
+  :core.typed {:check [cascalog-check.core]}
 
-             :profiles { :provided {:dependencies [[org.apache.hadoop/hadoop-core "1.2.1"]]}}
+  :profiles {:provided {:dependencies [[org.apache.hadoop/hadoop-core "1.2.1"]]}
 
              :dev {:source-paths ["dev" "env/dev/clj"]
                    :test-paths ["test"]

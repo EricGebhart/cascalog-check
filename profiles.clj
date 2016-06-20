@@ -10,15 +10,18 @@
                   [chestnut/lein-template "0.7.0" :exclusions [org.clojure/core.cache]]
                   [lein-ancient "0.6.10"]
                   [lein-bikeshed "0.2.0"]
+                  ;; eastwood 0.2.1 is what squiggly says it wants.
                   [jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
+                  [lein-typed "0.3.5"]
                   [lein-kibit "0.1.2"]
                   [lein-cloverage "1.0.6"]]
 
         :dependencies [[org.clojure/tools.namespace "0.2.11"]
-                       ;[org.clojure/tools.nrepl "0.2.12"]
+                                        ;[org.clojure/tools.nrepl "0.2.12"]
+                       [org.clojure/core.typed "0.3.23"]
                        [acyclic/squiggly-clojure "0.1.5"]
                        ^:replace [org.clojure/tools.nrepl "0.2.12"]
-                       [org.clojure/core.typed "0.3.23"]
+                       [org.clojure/core.typed "0.3.23"] ;; .7 is what squiggly wants.
                        [slamhound "1.5.5"]]
 
         ;; :env {:squiggly {:checkers [:eastwood]
