@@ -6,6 +6,12 @@ from a clojure query with a filter. Even when that code has not changed.
 This example works much better than my larger production project, but
 it does break sometimes. 
 
+It doesn't have to be cascalog, I've seen the same thing with an arity exception on a call.
+fix the code, reload the function, the error persists. Change the call in 'filter test` to
+use the wrong fiter function and you can see it in action.
+But it's super easy to reproduce with cascalog. There is no need to create an error 
+in the code to see it.  I just run `(codes 3)`.
+
 This is happening with cider 10, cider 12 and cider 13. I have no idea
 what might have changed to cause this it could have been anything as I
 have just returned to coding cascalog after several months.
@@ -21,7 +27,55 @@ The nrepl messages look clean to me at this point.
 This code seems to work just fine in the `lein repl`.  I have
 not seen it break there the few times I have tried it.
 
-### Cascalog logic ops only ?
+### kibit, eastwood and core.typed
+
+I have tried versions recommended by squiggly and also the newest versions.  
+Eastwood 2.1/2.3 and core-typed 3.7/3.23. kibit is unchanged.
+
+The message *"user-level profile defined in project files"*  makes no sense to me as there are clearly not any other than the
+one in my .lein/profiles.clj
+
+```
+└─(1:18:43:%)── lein typed check                                                                                            ──#(Mon,Jun20)─┘
+(WARNING: user-level profile defined in project files.)
+Initializing core.typed ...
+Building core.typed base environments ...
+Finished building base environments
+"Elapsed time: 21094.552088 msecs"
+core.typed initialized.
+Start collecting cascalog-check.core
+Finished collecting cascalog-check.core
+Collected 1 namespaces in 7741.133651 msecs
+Not checking cascalog-check.core (does not depend on clojure.core.typed)
+Checked 1 namespaces  in 7765.093461 msecs
+:ok
+
+└─(18:44:%)── lein kibit                                                                                                    
+(WARNING: user-level profile defined in project files.)
+
+└─(18:45:%)── lein eastwood                                                                                                 
+(WARNING: user-level profile defined in project files.)
+== Eastwood 0.2.3 Clojure 1.8.0 JVM 1.8.0_91
+Directories scanned for source files:
+  dev env/dev/clj src test
+== Linting cascalog-check.core ==
+== Linting cascalog-check.core-test ==
+== Warnings: 0 (not including reflection warnings)  Exceptions thrown: 0
+```
+### Who's is it?
+
+I'm not sure. But it's pointing down the squiggly clojure trail.  Taking squiggly clojure out will cause
+everything to work just fine.
+
+Commenting out this code in my emacs setup causes everything to work just fine, except I lose squiggly lines.
+
+    (eval-after-load 'flycheck '(flycheck-clojure-setup))
+    (add-hook 'after-init-hook #'global-flycheck-mode)
+    
+    (eval-after-load 'flycheck
+       '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-me
+
+### Cascalog logic ops only? um No.
 
 This seems to only effect cascalog code with a filterfn and maybe others,
 but there is a simple function, `filter` which uses the same filter function as cascalog, but uses clojure's filter on the results from a simpler
@@ -54,11 +108,21 @@ between the cider 12 and 13 environment is the cider package.
     
     leiningen 2.6.1
     Cascalog 3.0
-    emacs 24.4.1
+    emacs 24.5.1  - completely refreshed, all new packages.
     OS X 10.11.5
     
 
-## Usage
+## Reproduction.
+
+The short story:  
+jack-in, load the code, change the namespace, > `(codes 3)`. 
+add a function, (defn t [x] x), load the function, run `(codes 3)` again.
+It will fail.  reload again, function, file, it doesn't matter.  
+
+The only fix is to reload the function and then the 
+entire file. It may not even matter which function you load.
+This creates a scenario where squiggly is not invoked and the code actually 
+loads completely.
 
 Cider jack in.  I let cider do all the injections although I do
 specify squiggly clojure 1.5 explicitly as it was not injected with
@@ -154,6 +218,10 @@ Finally I reloaded the entire file `(C-c C-k)` and it worked.
 See profiles.clj.
 
 ## nrepl messages.
+
+### No squiggly, stuff works.
+
+This is pretty obvious, In the nrepl messages, every stack trace has some squiggly clojure before it.  The submissions that work don't.
 
 ### nrepl-messages.txt
 This just from the beginning to the first success.
