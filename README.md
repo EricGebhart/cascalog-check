@@ -171,6 +171,8 @@ Finally I reloaded the entire file `(C-c C-k)` and it worked.
 
 ## What that looked like.
 
+Remember, the code we are running _never_ changes.
+
 ```
     ;; You can disable it from appearing on start by setting
     ;; `cider-repl-display-help-banner' to nil.
@@ -244,7 +246,7 @@ loading just the function and doing a file load immediately after.
 ### nrepl-messages4.txt
 
 This one starts at end of messages3.txt where I first gave the wrong
-filename for filter-test.  Then gave the right name to get an arityexception.  I then fixed the function, reloadad just the function and re-ran `(filter-test foo-catv)` which is the clojure/cascalog hybrid version of `(cats foo-catv)`.  I continued to get the same arity exception until I reloaded all of the code with (C-c C-k).
+function name for the filter in filter-test.  Then gave the right name to get an arityexception.  I then fixed the function, reloadad just the function and re-ran `(filter-test foo-catv)` which is the clojure/cascalog hybrid version of `(cats foo-catv)`.  I continued to get the same arity exception until I reloaded all of the code with (C-c C-k).
 
 
 Bizarre!
