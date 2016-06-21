@@ -62,6 +62,19 @@ Directories scanned for source files:
 == Linting cascalog-check.core-test ==
 == Warnings: 0 (not including reflection warnings)  Exceptions thrown: 0
 ```
+
+Manually running the commands which precede the failure from nrepl messages shows no errors.
+
+```
+    cascalog-check.core> (do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-kb 'cascalog-check.core "/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj"))
+    []
+    cascalog-check.core> (do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-tc 'cascalog-check.core))
+    []
+    cascalog-check.core> (do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-ew 'cascalog-check.core))
+    ()
+    []```
+
+
 ### Who's is it?
 
 I'm not sure. But it's pointing down the squiggly clojure trail.  Taking squiggly clojure out will cause
