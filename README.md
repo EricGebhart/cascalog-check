@@ -3,8 +3,6 @@
 This is a simple example to reproduce a problem between cascalog and
 cider.  After a load or reload there is frequently a stack-trace
 from a clojure query with a filter. Even when that code has not changed.
-This example works much better than my larger production project, but
-it does break sometimes. 
 
 It doesn't have to be cascalog, I've seen the same thing with an arity exception on a call.
 fix the code, reload the function, the error persists. Change the call in 'filter test` to
@@ -12,25 +10,17 @@ use the wrong fiter function and you can see it in action.
 But it's super easy to reproduce with cascalog. There is no need to create an error 
 in the code to see it.  I just run `(codes 3)`.
 
-This is happening with cider 10, cider 12 and cider 13. I have no idea
-what might have changed to cause this it could have been anything as I
-have just returned to coding cascalog after several months.
+This is happening with cider 10, cider 12 and cider 13. 
 
-I have updated all emacs packages and worked through numerous errors 
-with squiggly clojure, eastwood etc. The last complaint I fixed was
-changing (:use cascalog.api)  to [cascalog.api :refer :all].
-That did seem to make it better at least in the bigger project, in
-that the code did work the first time, but not after edits.
-
-The nrepl messages look clean to me at this point.
-
-This code seems to work just fine in the `lein repl`.  I have
-not seen it break there the few times I have tried it.
+I have updated all emacs packages and made sure that the code has
+no warnings or errors from flycheck-clojure.  There is a minimalist `.emacs`
+which will create the minimum emacs configuration to replicate this.
+The nrepl messages look clean at this point.
 
 ### kibit, eastwood and core.typed
 
 I have tried versions recommended by squiggly and also the newest versions.  
-Eastwood 2.1/2.3 and core-typed 3.7/3.23. kibit is unchanged.
+Eastwood 2.1/2.3 and core-typed 3.7/3.23. Kibit is unchanged.
 
 The message *"user-level profile defined in project files"*  makes no sense to me as there are clearly not any other than the
 one in my .lein/profiles.clj
@@ -63,7 +53,7 @@ Directories scanned for source files:
 == Warnings: 0 (not including reflection warnings)  Exceptions thrown: 0
 ```
 
-Manually running the commands which precede the failure from nrepl messages shows no errors.
+Manually running the commands which precede the failure in nrepl messages show no errors.
 
 ```
     cascalog-check.core> (do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-kb 'cascalog-check.core "/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj"))
@@ -76,10 +66,8 @@ Manually running the commands which precede the failure from nrepl messages show
 
 ### Additional behavior.
 
-I have established through lots of iteration that adding a new function `(defn a [x] x)` and evaluating that new code causes the unrelated
-code to fail. Loading the function, and reloading the entire file does not always work.  What does always work is
-the file reload after the file has been saved. But not the save following the cider prompt which asks to save the file before reloading.
-It takes one more reload after that to get the code working again.  
+I have established through lots of iteration that adding a new function `(defn a [x] x)` will cause unrelated code to fail
+whether the new function is evaluated or not. Loading the function, and reloading the entire file does not always work.  What does always work is a file reload after the file has been saved. But not the save following the cider prompt which asks to save the file before reloading. It takes one more reload after that to get the code working again.  
 
 Doing everything at once can streamline the path to success.  Load the new function `(C-c C-c)`, Load the file with a save `C-c C-k`, 
 Load the file again with no save `C-c C-k`.  Avoiding the cider save prompt makes it faster.  Add a function, save the file, reload the file with `C-c C-k`.    
@@ -115,7 +103,7 @@ Commenting out this code in my emacs setup causes everything to work just fine, 
 ### Cascalog logic ops only? um No.
 
 This seems to only effect cascalog code with a filterfn and maybe others,
-but there is a simple function, `filter` which uses the same filter function as cascalog, but uses clojure's filter on the results from a simpler
+but there is a simple function, `filter-test` which uses the same filter function as cascalog, but uses clojure's filter on the results from a simpler
 query which actually works.
 
 ```(filter-test foo-catv)```
@@ -131,13 +119,10 @@ will continue to work using the same filter function that `cats` uses.
 Well, Now I'm not so sure. I had an error in filter-test using the wrong filter function with the wrong number of args.  I repaired it, reloaded the function to no effect. Still wrong number of args.  Reload the function again, failure.  - 3 times. Finally reload entire file.  Success.
 See **nrepl-messages4.txt**
 
-Very strange. This has got to be an environment problem.
-
 ## Environment.
 
 I started last week with cider 10. I upgraded everything to cider 12,
-and today switched to cider 13 to see if it was better. The only difference
-between the cider 12 and 13 environment is the cider package.
+and now I am using cider 13. 
 
 There is a minimalist **.emacs** file in the repository. It automatically installs
 these packages: cider, flycheck-clojure, clojure-mode, and flycheck-pos-tip.
@@ -149,14 +134,16 @@ The problem replicates with that simple emacs setup.
     
     leiningen 2.6.1
     Cascalog 3.0
-    emacs 24.5.1  - completely refreshed, all new packages.
+    emacs 24.5.1  - completely refreshed, all new packages. - It also failed with 24.4.1. 
+                     Use the .emacs from the repo for a very fresh and minimalist emacs. 
+                     **move your .emacs and .emacs.d out of the way first.**
     OS X 10.11.5
     
 
 ## Reproduction.
 
 There is a very minimalist `.emacs` file in the repo, it will install
-`cider, clojure-mode, flycheck-clojure and flycheck-pos-tip.`
+`cider, clojure-mode, flycheck-clojure and flycheck-pos-tip.` in your .emacs.d.
 
 ###The short story:  
 
@@ -287,9 +274,6 @@ loading just the function and doing a file load immediately after.
 
 This one starts at end of messages3.txt where I first gave the wrong
 function name for the filter in filter-test.  Then gave the right name to get an arityexception.  I then fixed the function, reloadad just the function and re-ran `(filter-test foo-catv)` which is the clojure/cascalog hybrid version of `(cats foo-catv)`.  I continued to get the same arity exception until I reloaded all of the code with (C-c C-k).
-
-
-Bizarre!
 
 
 ## License
