@@ -87,10 +87,22 @@ Load the file again with no save `C-c C-k`.  Avoiding the cider save prompt make
 Loading just the function will allow the function to work, but other code will stacktrace until the file is reloaded without a 
 cider prompt to save.
 
+
+If I add a new function `(defn a [x] x)`, save the file and load-file `C-c C-k`. There is no problem.  If I load-file and get a cider-prompt to save, that does not work.  If I load-file twice in a row, where the first one prompts for save, then that does work.  
+
+It does not seem to matter if I eval the new function or not. 
+Simply adding the function without any load of any kind and then going back to the repl and repeating the last eval `(codes 3)` will cause a crash.
+Returning back to the code, saving and reloading will cause it to work the next time.
+Returning back to the code, and reloading twice will also cause it to work the next time.
+Or just doing that all at once works. Add a function, save, load, execute.
+
 ### Who's is it?
 
-I'm not sure. But it's pointing down the squiggly clojure trail.  Taking squiggly clojure out will cause
-everything to work just fine.  Although what does that have to do with saving the file ?  That seems to point back to cider.
+I have no idea.
+
+It is somehow related to `flycheck-clojure`.  Disabling `flycheck-clojure` causes the problem to go away.
+
+However it seems somehow related to whether the file is currently saved or not. 
 
 Commenting out this code in my emacs setup causes everything to work just fine, except I lose squiggly lines.
 
@@ -143,22 +155,24 @@ The problem replicates with that simple emacs setup.
 
 ## Reproduction.
 
-The short story:  
-jack-in, load the code, change the namespace, > `(codes 3)`. 
+There is a very minimalist `.emacs` file in the repo, it will install
+`cider, clojure-mode, flycheck-clojure and flycheck-pos-tip.`
+
+###The short story:  
+
+jack-in, load the code - _it won't be_, change the namespace, > `(codes 3)`. 
 add a function, (defn t [x] x), load the function, run `(codes 3)` again.
 It will fail.  reload again, function, file, it doesn't matter.  
 
-The only fix is to reload the function and then the 
-entire file. It may not even matter which function you load.
-This creates a scenario where squiggly is not invoked and the code actually 
-loads completely.
+The only fix is to reload the entire file after a save, even if that save
+happened as part of a reload. 
 
-Cider jack in.  I let cider do all the injections although I do
-specify squiggly clojure 1.5 explicitly as it was not injected with
-cider 12.  See my profiles.clj in the repo.
+### The long description.
+
+Cider jack in.  I let cider do all the injections.  See my profiles.clj in the repo.
 
 Load core.clj into the repl, change to that namespace and run
-(codes 3)  or (cats foo-catv)
+`(codes 3)`  or `(cats foo-catv)`
 
 If it results in a `FlowException local step failed`,  reload
 the code and try again. Repeat as necessary until it works.
@@ -166,9 +180,6 @@ the code and try again. Repeat as necessary until it works.
 To break it again, sometimes just adding a blank line and reloading will
 do it.  Sometimes I add a stupid function (defn foo [x] x), or delete
 the same and then reload the code in order to break it.
-
-This simple example does not break as often as my bigger project. I do
-not know why. Obviously.
 
 ## How to Reproduce
 
@@ -187,7 +198,7 @@ Alternatively run `(cats foo-catv)`
 
 Add a function.  ```(defn s [x] x)```
 
-Load just the function `(C-c C-c)`.
+Load just the function `(C-c C-c)`.  - this is not actually necessary.
 
 Try combinations of load file and load defun to get success again.
 
