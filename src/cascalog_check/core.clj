@@ -44,7 +44,6 @@
 
 (defn s [x] x)
 
-
 (defn codes [max]
   (let [lvl-filter (lvl-f max)]
     (??<- [?id ?lvl ?code]
@@ -78,8 +77,6 @@
   [[(reduce conj [] (map first tuples))]])
 
 (defbufferfn dosum [tuples] [(reduce + (map first tuples))])
-
-
 
 (defn cats-sub []
   (<- [?id ?catv]

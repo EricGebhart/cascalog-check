@@ -7,7 +7,8 @@
                                         ;[org.clojure/clojure "1.8.0"]
                  [cascalog/cascalog-core "3.0.0"]]
 
-  :plugins [[lein-typed "0.3.5"]]
+  :plugins [[lein-environ "1.0.0"]
+            [lein-typed "0.3.5"]]
 
   :core.typed {:check [cascalog-check.core]}
 
@@ -22,4 +23,6 @@
                                   [org.apache.hadoop/hadoop-core "1.2.1"]]
 
                    :env {:squiggly {:checkers [:eastwood :kibit]
-                                    :eastwood-exclude-linters [:unlimited-use]}}}})
+                                    :eastwood-exclude-linters [:unlimited-use]
+                                    :eastwoood-options {;; :bultin-config-files ["myconfigfile.clj"]
+                                                        }}}}})
