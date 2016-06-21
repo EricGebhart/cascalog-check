@@ -81,17 +81,16 @@ code to fail. Loading the function, and reloading the entire file does not alway
 the file reload after the file has been saved. But not the save following the cider prompt which asks to save the file before reloading.
 It takes one more reload after that to get the code working again.  
 
-This can be shortened by avoiding the cider prompt to save. Add a new function, save the file
-and then reload the file `(C-c C-k)`. 
+Doing everything at once can streamline the path to success.  Load the new function `(C-c C-c)`, Load the file with a save `C-c C-k`, 
+Load the file again with no save `C-c C-k`.  Avoiding the cider save prompt makes it faster.  Add a function, save the file, reload the file with `C-c C-k`.    
 
 Loading just the function will allow the function to work, but other code will stacktrace until the file is reloaded without a 
 cider prompt to save.
 
-
 ### Who's is it?
 
 I'm not sure. But it's pointing down the squiggly clojure trail.  Taking squiggly clojure out will cause
-everything to work just fine.  Although what does that have to do with saving the file ?
+everything to work just fine.  Although what does that have to do with saving the file ?  That seems to point back to cider.
 
 Commenting out this code in my emacs setup causes everything to work just fine, except I lose squiggly lines.
 
