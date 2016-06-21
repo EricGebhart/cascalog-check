@@ -74,11 +74,24 @@ Manually running the commands which precede the failure from nrepl messages show
     ()
     []```
 
+### Additional behavior.
+
+I have established through lots of iteration that adding a new function `(defn a [x] x)` and evaluating that new code causes the unrelated
+code to fail. Loading the function, and reloading the entire file does not always work.  What does always work is
+the file reload after the file has been saved. But not the save following the cider prompt which asks to save the file before reloading.
+It takes one more reload after that to get the code working again.  
+
+This can be shortened by avoiding the cider prompt to save. Add a new function, save the file
+and then reload the file `(C-c C-k)`. 
+
+Loading just the function will allow the function to work, but other code will stacktrace until the file is reloaded without a 
+cider prompt to save.
+
 
 ### Who's is it?
 
 I'm not sure. But it's pointing down the squiggly clojure trail.  Taking squiggly clojure out will cause
-everything to work just fine.
+everything to work just fine.  Although what does that have to do with saving the file ?
 
 Commenting out this code in my emacs setup causes everything to work just fine, except I lose squiggly lines.
 
