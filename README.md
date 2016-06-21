@@ -127,6 +127,10 @@ I started last week with cider 10. I upgraded everything to cider 12,
 and today switched to cider 13 to see if it was better. The only difference
 between the cider 12 and 13 environment is the cider package.
 
+There is a minimalist **.emacs** file in the repository. It automatically installs
+these packages: cider, flycheck-clojure, clojure-mode, and flycheck-pos-tip.
+The problem replicates with that simple emacs setup.
+
     Connected to nREPL server - nrepl://localhost:51662
     ;; CIDER 0.13.0snapshot (package: 20160612.1230), nREPL 0.2.12
     ;; Clojure 1.7.0, Java 1.8.0_73
