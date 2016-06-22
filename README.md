@@ -16,6 +16,7 @@ I have updated all emacs packages and made sure that the code has
 no warnings or errors from flycheck-clojure.  There is a minimalist `.emacs`
 which will create the minimum emacs configuration to replicate this.
 The nrepl messages look clean at this point.
+
 ### Eastwood!
 
 @pnf from squiggly-clojure:
@@ -27,10 +28,18 @@ I've found I can reproduce the FlowException by running the eastwood check manua
     ;; reload manually
     (cats foo-catv) ;; (["foo" [3 100 8 12] true])
 
+Since this new understanding I have read a lot a explored Eastwood a bit. 
+  * Changed to use Clojure 1.7.0  since Eastwood 2.1 needs that.
+  * Excluded prismatic/schema from cascalog and added in the newest version which uses potemkin 0.4.1 instead of 0.3.2.
+  * Tried each linter individually. Any linter causes the problem to appear.
+  * Following the example above it is not necessary to disable flycheck. It just won't be loaded in the beginning.
+  * To reproduce just change to the name space and run `(cats foo-catv)` if it doesn't work reload and try again. If it does work run eastwood.lint/lint and then run `(cats foo-catv)` again. It will get a Flow Exception.
+
+Running Eastwood in the repl is experimental, based on how it works, it may not be surprising that something is happening to corrupt the session.
 
 ### kibit, eastwood and core.typed
 
-I have tried versions recommended by squiggly and also the newest versions.  
+I have tried versions recommended by squiggly and also the newest versions.  Or I thought I did.
 Eastwood 2.1/2.3 and core-typed 3.7/3.23. Kibit is unchanged.
 
 The message *"user-level profile defined in project files"*  makes no sense to me as there are clearly not any other than the
