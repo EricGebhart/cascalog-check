@@ -16,6 +16,17 @@ I have updated all emacs packages and made sure that the code has
 no warnings or errors from flycheck-clojure.  There is a minimalist `.emacs`
 which will create the minimum emacs configuration to replicate this.
 The nrepl messages look clean at this point.
+### Eastwood!
+
+@pnf from squiggly-clojure:
+I've found I can reproduce the FlowException by running the eastwood check manually, i.e.
+
+    (cats foo-catv) ;; (["foo" [3 100 8 12] true])
+    (eastwood.lint/lint {:source-paths ["src"], :namespaces ['cascalog-check.core], :continue-on-exception true, :exclude-linters [:unlimited-use]})
+    (cats foo-catv) ;; throws
+    ;; reload manually
+    (cats foo-catv) ;; (["foo" [3 100 8 12] true])
+
 
 ### kibit, eastwood and core.typed
 
