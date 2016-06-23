@@ -45,44 +45,42 @@ Eastwood 2.1/2.3 and core-typed 3.7/3.23. Kibit is unchanged.
 The message *"user-level profile defined in project files"*  makes no sense to me as there are clearly not any other than the
 one in my .lein/profiles.clj
 
-```
-└─(1:18:43:%)── lein typed check                                                                                            ──#(Mon,Jun20)─┘
-(WARNING: user-level profile defined in project files.)
-Initializing core.typed ...
-Building core.typed base environments ...
-Finished building base environments
-"Elapsed time: 21094.552088 msecs"
-core.typed initialized.
-Start collecting cascalog-check.core
-Finished collecting cascalog-check.core
-Collected 1 namespaces in 7741.133651 msecs
-Not checking cascalog-check.core (does not depend on clojure.core.typed)
-Checked 1 namespaces  in 7765.093461 msecs
-:ok
 
-└─(18:44:%)── lein kibit                                                                                                    
-(WARNING: user-level profile defined in project files.)
+    └─(1:18:43:%)── lein typed check                                                                                            ──#(Mon,Jun20)─┘
+    (WARNING: user-level profile defined in project files.)
+    Initializing core.typed ...
+    Building core.typed base environments ...
+    Finished building base environments
+    "Elapsed time: 21094.552088 msecs"
+    core.typed initialized.
+    Start collecting cascalog-check.core
+    Finished collecting cascalog-check.core
+    Collected 1 namespaces in 7741.133651 msecs
+    Not checking cascalog-check.core (does not depend on clojure.core.typed)
+    Checked 1 namespaces  in 7765.093461 msecs
+    :ok
 
-└─(18:45:%)── lein eastwood                                                                                                 
-(WARNING: user-level profile defined in project files.)
-== Eastwood 0.2.3 Clojure 1.8.0 JVM 1.8.0_91
-Directories scanned for source files:
-  dev env/dev/clj src test
-== Linting cascalog-check.core ==
-== Linting cascalog-check.core-test ==
-== Warnings: 0 (not including reflection warnings)  Exceptions thrown: 0
-```
+    └─(18:44:%)── lein kibit                                                                                                    
+    (WARNING: user-level profile defined in project files.)
+
+    └─(18:45:%)── lein eastwood                                                                                                 
+    (WARNING: user-level profile defined in project files.)
+    == Eastwood 0.2.3 Clojure 1.8.0 JVM 1.8.0_91
+    Directories scanned for source files:
+      dev env/dev/clj src test
+    == Linting cascalog-check.core ==
+    == Linting cascalog-check.core-test ==
+    == Warnings: 0 (not including reflection warnings)  Exceptions thrown: 0
 
 Manually running the commands which precede the failure in nrepl messages show no errors.
 
-```
     cascalog-check.core> (do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-kb 'cascalog-check.core "/Users/eric/Projects/cascalog-check/src/cascalog_check/core.clj"))
     []
     cascalog-check.core> (do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-tc 'cascalog-check.core))
     []
     cascalog-check.core> (do (require 'squiggly-clojure.core) (squiggly-clojure.core/check-ew 'cascalog-check.core))
     ()
-    []```
+    []
 
 ### Additional behavior.
 
